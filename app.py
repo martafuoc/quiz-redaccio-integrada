@@ -7,6 +7,7 @@ Vistes:
   - Resultats d'equip (projector): https://<la-teva-app>.streamlit.app/?vista=resultats
 """
 
+import json
 import time
 import uuid
 from datetime import datetime
@@ -143,10 +144,13 @@ div.stButton>button p{color:#000078!important}
 # ------------------------------------------------------------------
 @st.cache_resource(show_spinner=False)
 def llibre():
+    # Accepta el JSON sencer enganxat (gcp_json) o els camps per separat (gcp_service_account)
+    if "gcp_json" in st.secrets:
+        info = json.loads(st.secrets["gcp_json"])
+    else:
+        info = dict(st.secrets["gcp_service_account"])
     creds = Credentials.from_service_account_info(
-        dict(st.secrets["gcp_service_account"]),
-        scopes=["https://www.googleapis.com/auth/spreadsheets"],
-    )
+        info, scopes=["https://www.googleapis.com/auth/spreadsheets"])
     return gspread.authorize(creds).open_by_key(st.secrets["sheet_id"])
 
 
