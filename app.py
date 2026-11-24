@@ -133,6 +133,10 @@ div.stButton>button{width:100%;min-height:64px;border-radius:14px;background:#ff
   font-weight:700;font-size:16px;border:0;white-space:normal;text-align:left}
 div.stButton>button:hover{background:#73EDFF;color:#000078}
 div.stButton>button p{color:#000078!important}
+[data-testid="stFormSubmitButton"] button{background:#73EDFF;color:#000078;border:0;border-radius:14px;
+  min-height:52px;padding:0 28px;font-weight:800}
+[data-testid="stFormSubmitButton"] button:hover{background:#ffffff;color:#000078}
+[data-testid="stFormSubmitButton"] button p{color:#000078!important;font-weight:800}
 .stTextInput input,.stTextArea textarea{background:#fff;color:#000078}
 [data-testid="stTable"] *, [data-testid="stDataFrame"] *{color:#000078}
 </style>
